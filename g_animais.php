@@ -57,20 +57,29 @@ $resultado = $conexao->query($sql);
     <style>
       .scrollable-table {
         overflow-x: auto;
-        width: 360px;
+        width: 370px;
       }
       .status-select {
         width: 150px; 
       }
       .table-wrapper {
-        max-height: 340px; /* Defina a altura máxima para a tabela */
+        max-height: 360px; /* Defina a altura máxima para a tabela */
         overflow-y: auto; /* Adicione a barra de rolagem vertical */
     }
       .button {
-  width: 120px;  
-  height: 45px;  
+  width: 140px;  
+  height: 46px;  
+
 }
-  
+    .cadastrar{
+      
+      max-width: 180px;
+      margin:0 auto;
+      display: flex;
+      justify-content: center;
+
+    }
+
     </style>
 
 </head>
@@ -154,50 +163,33 @@ $resultado = $conexao->query($sql);
                 echo "<tr><td colspan='12'>Nenhum registro encontrado.</td></tr>";
             }
             
-                ?>
+  ?>
+
             </tbody>
         </table>
     </div>
   </div>
-    <div class="text-right">
-<a href="tela_admin.html" class="btn btn-primary btn-sm" style="font-size: 12px;" >< Voltar</a>
-</div>
+  </div>
 </body>
+<div class = "cadastrar">
+      <button type="button" class="btn btn-warning"; onclick="window.location.href='cadastrar_pets.php'">Cadastrar Pets +</button>
 
-</html>
-
-
-
-      </div>
+</div>
+     
+      
       <div class="footer"> 
-        
-      <div class="d-flex flex-column align-items-center">
-        <br>
-        
-        <a href="cadastrar_pets.php" class="btn btn-primary btn-sm">+ Cadastrar</a>
-        
-        <br>
-        <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-end">
-    <li class="page-item disabled">
-      <a class="page-link">Previous</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#">Next</a>
-    </li>
-  </ul>
-</nav>
-          
-        </div>
+            <button class="button" style="background-color: #fff; color: #000;" onclick="window.location.href='tela_admin.html';">Menu</button>
+
+            <button class="button" style="background-color:black; color:white;" onclick="window.location.href='login.php';">Sair</button>
         
       </div>
     </div>
   </body>
-</html>
+</html>SS
 
 <?php
 $conexao->close();
 ?>
+
+
+<a href="cadastrar_pets.php" 
