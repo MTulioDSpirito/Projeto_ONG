@@ -142,22 +142,9 @@ $resultado = $conexao->query($sql);
       </div>
       <div class="footer"> 
         
-      <div class="d-flex flex-column align-items-center">
-        <br>
-        <a href="tela_admin.html" class="btn btn-primary btn-sm">Menu ADM</a>
-        <br>
-        <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-end">
-    <li class="page-item disabled">
-      <a class="page-link">Previous</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#">Next</a>
-    </li>
-  </ul>
+      <button class="button" style="background-color: #fff; color: #000;" onclick="window.location.href='tela_admin.html';">Menu</button>
+
+            <button class="button" style="background-color:black; color:white;" onclick="window.location.href='login.php';">Sair</button>
           
         </div>
         
