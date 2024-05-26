@@ -8,6 +8,7 @@ body {
     height: 100vh;
     font-family: 'Roboto', sans-serif;
     background-color: #f2f2f2; /* cinza claro */
+    
 }
 .container {
 
@@ -19,6 +20,7 @@ flex-direction: column;
 gap: 20px;
 border-radius: 25px;
 margin: 10px; /* margem cinza claro */
+
 
 }
 
@@ -35,6 +37,7 @@ margin: 10px; /* margem cinza claro */
     align-items: center;
     justify-content: center;
     gap: 20px;
+    
        
     
 }

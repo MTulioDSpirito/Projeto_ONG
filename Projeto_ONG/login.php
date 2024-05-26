@@ -61,7 +61,7 @@ if(isset($_POST['submit'])) {
 <body>
 <div class="container">
     <div class="header"></div>
-    <div class="main">
+    <div class="main" style="background-image: url('Projeto_ONG/img/dog.gif');">
         <h1>Entrar</h1>
         <form action="login.php" method="POST" id="loginForm">
             <label for="email">Email:</label><br>
