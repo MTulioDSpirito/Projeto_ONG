@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-<?php include 'imagemperfil.php'?>
-=======
->>>>>>> e5061945306da0b7be2524c0144054f26c0a1e0f
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -50,7 +46,6 @@
         .footer .button img {
             width: 38px;
             height: 30px;
-<<<<<<< HEAD
 
          
         }
@@ -59,16 +54,10 @@
             border-radius: 50%;
             width: 50px;
             height: 50px;
-=======
->>>>>>> e5061945306da0b7be2524c0144054f26c0a1e0f
         }
     </style>
 </head>
 <body>
-<<<<<<< HEAD
-
-=======
->>>>>>> e5061945306da0b7be2524c0144054f26c0a1e0f
     <div class="container">
         <div class="header"></div>
         <div class="main">
@@ -82,26 +71,13 @@
         </div>  
         <div class="footer">
             <button class="button" onclick="window.location.href='login.php';">
-<<<<<<< HEAD
                 <img class="2" src="./img/home.png" alt="Home">
-=======
-                <img src="./img/home.png" alt="Home">
->>>>>>> e5061945306da0b7be2524c0144054f26c0a1e0f
             </button>
             <button class="button" onclick="window.location.href='search.php';">
                 <img src="./img/search-file.gif" alt="Search">
             </button>
-<<<<<<< HEAD
             <button class="button" onclick="window.location.href='usuario_logado.php';">
                 <img class="perfil" src="<?php echo $nomeArquivo; ?>" alt="Avatar">
-=======
-            <button class="button" onclick="window.location.href='user.php';">
-                <img src="./img/user.gif" alt="User">
->>>>>>> e5061945306da0b7be2524c0144054f26c0a1e0f
-            </button>
-        </div>
-    </div>
-
     <!-- Modal -->
     <div class="modal fade" id="adoptionModal" tabindex="-1" aria-labelledby="adoptionModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -153,10 +129,7 @@
             die("Conexão falhou: " . $conexao->connect_error);
         }
 
-<<<<<<< HEAD
         
-=======
->>>>>>> e5061945306da0b7be2524c0144054f26c0a1e0f
         // Consulta para obter todos os dados
         $sql = "SELECT DISTINCT id_animal, nome, sexo, porte, idade, castrado, vermifugado, descricao, foto_link FROM cadastro";
         $resultado = $conexao->query($sql);
@@ -179,10 +152,7 @@
         }
 
         $conexao->close();
-<<<<<<< HEAD
         
-=======
->>>>>>> e5061945306da0b7be2524c0144054f26c0a1e0f
         ?>
 
         let currentCardIndex = 0;
