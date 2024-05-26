@@ -1,3 +1,4 @@
+<?php include 'imagemperfil.php'?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -46,6 +47,14 @@
         .footer .button img {
             width: 38px;
             height: 30px;
+
+         
+        }
+        .perfil{
+            
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
         }
     </style>
 </head>
@@ -63,13 +72,13 @@
         </div>  
         <div class="footer">
             <button class="button" onclick="window.location.href='login.php';">
-                <img src="./img/home.png" alt="Home">
+                <img class="2" src="./img/home.png" alt="Home">
             </button>
-            <button class="button" onclick="window.location.href='search.php';">
+            <button class="button" onclick="window.location.href='relatorio.html';">
                 <img src="./img/search-file.gif" alt="Search">
             </button>
-            <button class="button" onclick="window.location.href='user.php';">
-                <img src="./img/user.gif" alt="User">
+            <button class="button" onclick="window.location.href='usuario_logado.php';">
+                <img class="perfil" src="<?php echo $nomeArquivo; ?>" alt="Avatar">
             </button>
         </div>
     </div>
@@ -125,6 +134,7 @@
             die("Conexão falhou: " . $conexao->connect_error);
         }
 
+        
         // Consulta para obter todos os dados
         $sql = "SELECT DISTINCT id_animal, nome, sexo, porte, idade, castrado, vermifugado, descricao, foto_link FROM cadastro";
         $resultado = $conexao->query($sql);
@@ -147,6 +157,7 @@
         }
 
         $conexao->close();
+        
         ?>
 
         let currentCardIndex = 0;

@@ -82,13 +82,24 @@ $resultado = $conexao->query($sql);
     <div class="main">
 
     <h4>Gerenciar Usuários</h4>
+    <?php
+
+    $pesquisa = $_POST['busca'] ?? '';
+
+    include "config.php";
+
+    $sql = "SELECT * FROM usuarios WHERE nome LIKE '%$pesquisa%'";
+
+    $dados = mysqli_query($conexao, $sql);
+
+?>
       
       
     <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
-    <form class="d-flex" role="search">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="button" type="submit" >Search</button>
+    <form class="d-flex" role="search" action="g_usuarios.php" method="post">
+      <input class="form-control me-2" type="search" placeholder="Inserir nome" name="busca" aria-label="Search">
+      <button class="button" type="submit" >Pesquisa</button>
     </form>
   </div>
   </nav>
@@ -110,26 +121,31 @@ $resultado = $conexao->query($sql);
             </thead>
             <tbody>
                 <?php
-               if ($resultado->num_rows > 0) {
-                while ($row = $resultado->fetch_assoc()) {
-                    echo "<tr>";
-                    echo "<td>" . $row['ID'] . "</td>";
-                    echo "<td>" . $row['nome'] . "</td>";
-                    echo "<td>" . $row['email'] . "</td>";
-                    echo "<td>" . $row['cpf'] . "</td>";
-                    echo "<td>" . $row['endereco'] . "</td>";
-                    echo "<td>";
-                    echo "<form method='post' action='' onsubmit='return confirmDelete()'>";
-                    echo "<input type='hidden' name='ID' value='" . $row['ID'] . "'>";
-                    echo "<input type='hidden' name='delete' value='1'>"; 
-                    echo "<button type='submit' class='btn btn-danger btn-sm'>Apagar</button>";                    
-                    echo "</form>";
-                    echo "</td>";
-                    echo "</tr>";
+                if ($resultado->num_rows > 0) {
+                    $linha = mysqli_fetch_assoc($dados);
+                    if ($linha) {
+                        do {
+                            echo "<tr>";
+                            echo "<td>" . $linha['ID'] . "</td>";
+                            echo "<td>" . $linha['nome'] . "</td>";
+                            echo "<td>" . $linha['email'] . "</td>";
+                            echo "<td>" . $linha['cpf'] . "</td>";
+                            echo "<td>" . $linha['endereco'] . "</td>";
+                            echo "<td>";
+                            echo "<form method='post' action='' onsubmit='return confirmDelete()'>";
+                            echo "<input type='hidden' name='ID' value='" . $linha['ID'] . "'>";
+                            echo "<input type='hidden' name='delete' value='1'>"; 
+                            echo "<button type='submit' class='btn btn-danger btn-sm'>Apagar</button>";                    
+                            echo "</form>";
+                            echo "</td>";
+                            echo "</tr>";
+                        } while ($linha = mysqli_fetch_assoc($dados));
+                    } else {
+                        echo "<span style='color:red;'>Sem registro</span>";
+                    }
+                } else {
+                    echo "<span style='color:red;'>Sem registro</span>";
                 }
-            } else {
-                echo "<tr><td colspan='12'>Nenhum registro encontrado.</td></tr>";
-            }
             
                 ?>
             </tbody>
