@@ -1,3 +1,4 @@
+<?php include 'imagemperfil.php'?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -78,6 +79,10 @@
             </button>
             <button class="button" onclick="window.location.href='usuario_logado.php';">
                 <img class="perfil" src="<?php echo $nomeArquivo; ?>" alt="Avatar">
+            </button>
+        </div>
+    </div>
+
     <!-- Modal -->
     <div class="modal fade" id="adoptionModal" tabindex="-1" aria-labelledby="adoptionModalLabel" aria-hidden="true">
         <div class="modal-dialog">
