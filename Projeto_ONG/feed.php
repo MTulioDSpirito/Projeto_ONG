@@ -74,7 +74,7 @@
             <button class="button" onclick="window.location.href='login.php';">
                 <img class="2" src="./img/home.png" alt="Home">
             </button>
-            <button class="button" onclick="window.location.href='relatorio.html';">
+            <button class="button" onclick="window.location.href='usuario_relatorio.html';">
                 <img src="./img/search-file.gif" alt="Search">
             </button>
             <button class="button" onclick="window.location.href='usuario_logado.php';">
