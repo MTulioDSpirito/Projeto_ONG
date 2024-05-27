@@ -1,32 +1,4 @@
-<?php
-session_start();
-if(isset($_POST['submit'])) {
-    include_once('config.php');
 
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
-
-    // Verifica se é o admin
-    if($email == 'admin@gmail.com' && $senha == '123456') {
-        header("Location: tela_admin.html");
-        exit();
-    }
-
-    $result = mysqli_query($conexao, "SELECT id FROM usuarios WHERE email='$email' AND senha='$senha'");
-
-    if(mysqli_num_rows($result) > 0) {
-        // O usuário está logado com sucesso
-        $row = mysqli_fetch_assoc($result);
-        $_SESSION['user_id'] = $row['id'];
-        $_SESSION['email'] = $email; // Adicionando a sessão do email
-        header("Location: feed.php");
-        exit();
-    } else {
-        // Email ou senha inválidos
-        echo "<span style='color:red;'>Email ou senha inválidos</span>";
-    }
-}
-?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -62,6 +34,39 @@ if(isset($_POST['submit'])) {
 <div class="container">
     <div class="header"></div>
     <div class="main" style="background-image: url('Projeto_ONG/img/dog.gif');">
+
+
+
+
+    <?php
+session_start();
+if(isset($_POST['submit'])) {
+    include_once('config.php');
+
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+
+    // Verifica se é o admin
+    if($email == 'admin@gmail.com' && $senha == '123456') {
+        header("Location: tela_admin.html");
+        exit();
+    }
+
+    $result = mysqli_query($conexao, "SELECT id FROM usuarios WHERE email='$email' AND senha='$senha'");
+
+    if(mysqli_num_rows($result) > 0) {
+        // O usuário está logado com sucesso
+        $row = mysqli_fetch_assoc($result);
+        $_SESSION['user_id'] = $row['id'];
+        $_SESSION['email'] = $email; // Adicionando a sessão do email
+        header("Location: feed.php");
+        exit();
+    } else {
+        // Email ou senha inválidos
+        echo "<span style='color:red;'>Email ou senha inválidos</span>";
+    }
+}
+?>
         <h1>Entrar</h1>
         <form action="login.php" method="POST" id="loginForm">
             <label for="email">Email:</label><br>
