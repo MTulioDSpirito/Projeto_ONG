@@ -35,14 +35,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["status"])) {
 
 // Verifica se o formulário de exclusão foi enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete"]) && $_POST["delete"] == '1') {
-  deleteRow($conexao, $_POST["id_animal"]);
+    deleteRow($conexao, $_POST["id_animal"]);
 }
 
+// Inicializa a consulta SQL
+$sql = "SELECT * FROM cadastro";
 
-
+// Verifica se o formulário de busca foi submetido
+if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['search'])) {
+    $searchTerm = $conexao->real_escape_string($_GET['search']);
+    $sql .= " WHERE id_animal LIKE '%$searchTerm%' OR nome LIKE '%$searchTerm%'";
+}
 
 // Executa a consulta SQL
-$sql = "SELECT * FROM cadastro";
 $resultado = $conexao->query($sql);
 ?>
 <!DOCTYPE html>
@@ -95,9 +100,9 @@ $resultado = $conexao->query($sql);
     
     <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
-    <form class="d-flex" role="search">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="button" type="submit" >Search</button>
+    <form class="d-flex" role="search" method="get" action="">
+      <input class="form-control me-2" type="search" placeholder="Insira um nome ou Id" aria-label="Search" name="search">
+      <button class="button" type="submit">Search</button>
     </form>
   </div>
   </nav>
@@ -171,9 +176,8 @@ $resultado = $conexao->query($sql);
   </div>
   </div>
 </body>
-<div class = "cadastrar">
-      <button type="button" class="btn btn-warning"; onclick="window.location.href='cadastrar_pets.php'">Cadastrar Pets +</button>
-
+<div class="cadastrar">
+      <button type="button" class="btn btn-warning" onclick="window.location.href='cadastrar_pets.php'">Cadastrar Pets +</button>
 </div>
      
       
@@ -190,6 +194,3 @@ $resultado = $conexao->query($sql);
 <?php
 $conexao->close();
 ?>
-
-
-<a href="cadastrar_pets.php" 
