@@ -47,7 +47,7 @@
                 $result = mysqli_query($conexao, "INSERT INTO cadastro(nome, sexo, porte, castrado, vermifugado, doenca, idade, descricao, entrada, saida, foto_link) VALUES ('$nome', '$sexo', '$porte', '$castrado', '$vermifugado', '$doenca', '$idade', '$descricao', '$entrada', '$saida', '$foto_link')");
 
                 if($result) {
-                    echo "<span style='color:green;'>Usuário cadastrado com sucesso</span>";
+                    echo "<span style='color:green;'>Pet cadastrado com sucesso</span>";
                 } else {
                     echo "<span style='color:red;'>Erro ao cadastrar usuário</span>";
                 }

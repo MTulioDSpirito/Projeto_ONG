@@ -1,4 +1,4 @@
-<?php include 'imagemperfil.php'?>
+<?php include 'imagemperfil.php' ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -8,18 +8,23 @@
     <link rel="stylesheet" href="home.css">
     <style>
         .card img {
-            width: 288px;
+            width: 100%;
             height: 280px;
-            object-fit: cover;
-            border-bottom-left-radius:5px;
+            object-fit: contain; /* Alterado de cover para contain */
+            border-bottom-left-radius: 5px;
             border-bottom-right-radius: 5px;
         }
         .card {
-            width:380px;
+            width: 360px;
             margin: 10px auto;
-            max-height: 532px; /* Definindo a altura máxima dos cards */
-            overflow-y: auto; /* Adicionando rolagem vertical caso o conteúdo exceda a altura máxima */
-            overflow-x: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .card-body {
+            max-height: 200px; /* Definindo a altura máxima da área de texto do card */
+            overflow-y: auto; /* Adicionando rolagem vertical para a área de texto do card */
+            text-align: center; /* Centralizando o texto no card */
         }
         .card-container {
             display: flex;
@@ -47,11 +52,8 @@
         .footer .button img {
             width: 38px;
             height: 30px;
-
-         
         }
-        .perfil{
-            
+        .perfil {
             border-radius: 50%;
             width: 50px;
             height: 50px;
@@ -69,7 +71,7 @@
                 <button id="prevBtn" class="btn btn-primary" onclick="showPrevCard()">Anterior</button>
                 <button id="nextBtn" class="btn btn-primary" onclick="showNextCard()">Próximo</button>
             </div>
-        </div>  
+        </div>
         <div class="footer">
             <button class="button" onclick="window.location.href='login.php';">
                 <img class="2" src="./img/home.png" alt="Home">
@@ -134,7 +136,6 @@
             die("Conexão falhou: " . $conexao->connect_error);
         }
 
-        
         // Consulta para obter todos os dados
         $sql = "SELECT DISTINCT id_animal, nome, sexo, porte, idade, castrado, vermifugado, descricao, foto_link FROM cadastro";
         $resultado = $conexao->query($sql);
@@ -142,8 +143,7 @@
         if ($resultado->num_rows > 0) {
             while($row = $resultado->fetch_assoc()) {
                 echo "cards.push({
-                    id_animal:
-                    '". $row["id_animal"] ."',
+                    id_animal: '". $row["id_animal"] ."',
                     nome: '". $row["nome"] ."',
                     sexo: '". $row["sexo"] ."',
                     porte: '". $row["porte"] ."',
@@ -157,7 +157,6 @@
         }
 
         $conexao->close();
-        
         ?>
 
         let currentCardIndex = 0;
@@ -166,7 +165,7 @@
             const cardContainer = document.getElementById('card-container');
             const card = cards[index];
             cardContainer.innerHTML = `
-                <div class="card" style="width: 20rem; margin: 10px;">
+                <div class="card">
                     <img src="${card.foto_link}" class="card-img-top" alt="Imagem do pet">
                     <div class="card-body">
                         <h5 class="card-title">Informações do Animal</h5>
@@ -224,11 +223,16 @@
             .then(response => response.text())
             .then(data => {
                 alert('Solicitação enviada com sucesso!');
+                // Fechar o modal após enviar
+                alert('Solicitação enviada com sucesso!');
                 // Fechar o modal após enviar a solicitação
                 const adoptionModal = bootstrap.Modal.getInstance(document.getElementById('adoptionModal'));
                 adoptionModal.hide();
             })
-            .catch(error => console.error('Erro:', error));
+            .catch(error => {
+                console.error('Erro:', error);
+                alert('Houve um erro ao enviar a solicitação.');
+            });
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
