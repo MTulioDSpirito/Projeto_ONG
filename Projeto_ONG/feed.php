@@ -17,7 +17,7 @@
         .card {
             width: 360px;
             margin: 10px auto;
-            display: flex;
+            display: block;
             flex-direction: column;
             align-items: center;
         }
@@ -150,7 +150,7 @@
                     idade: '". $row["idade"] ."',
                     castrado: ". ($row["castrado"] ? 'true' : 'false') .",
                     vermifugado: ". ($row["vermifugado"] ? 'true' : 'false') .",
-                    descricao: '". $row["descricao"] ."',
+                    descricao: '". nl2br($row["descricao"]) ."',
                     foto_link: '". $row["foto_link"] ."'
                 });\n";
             }

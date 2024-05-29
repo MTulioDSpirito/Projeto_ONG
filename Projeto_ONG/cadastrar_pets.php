@@ -22,7 +22,7 @@ if(isset($_POST['submit'])) {
     $vermifugado = $_POST['vermifugado'];
     $doenca = $_POST['doenca'];
     $idade = $_POST['idade'];
-    $descricao = $_POST['descricao'];
+    $descricao = nl2br($conexao->real_escape_string($_POST['descricao'])); // Adicionando nl2br
     $entrada = $_POST['entrada'];
     $saida = $_POST['saida'];
     $foto_link = $_POST['foto_link'];
@@ -43,6 +43,7 @@ if(isset($_POST['submit'])) {
 
 $conexao->close();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -96,6 +97,16 @@ $conexao->close();
             }
             return true;
         }
+
+        // Função para prevenir Enter no campo de descrição
+        document.addEventListener('DOMContentLoaded', function() {
+            var descricaoField = document.getElementById('descricao');
+            descricaoField.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                }
+            });
+        });
     </script>
 </head>
 <body>
