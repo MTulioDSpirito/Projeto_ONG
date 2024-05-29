@@ -51,12 +51,13 @@ $conexao->close();
     <link rel="stylesheet" href="home.css">
     <style>
         .main {
-            max-height: 60vh; /* Define a altura máxima como 60% da altura da viewport */
+            max-height: 65vh; /* Define a altura máxima como 65% da altura da viewport */
             overflow-y: auto; /* Adiciona a barra de rolagem vertical */
-            padding-bottom: 100px; /* Adiciona espaço no final para evitar que a última mensagem seja cortada */
+           
+            display: block;
         }
         .list-group-item {
-            margin-bottom: 10px; /* Espaçamento entre as mensagens */
+            margin-bottom: 5px; /* Espaçamento entre as mensagens */
         }
         .delete-btn {
             background-color: red;
@@ -120,3 +121,4 @@ $conexao->close();
     </div>
 </body>
 </html>
+
