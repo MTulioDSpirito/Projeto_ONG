@@ -1,3 +1,49 @@
+<?php
+// Configurações do banco de dados
+$dbHost = '34.95.244.237';
+$dbUsername = 'turma3';
+$dbPassword = '123456';
+$dbName = 'bd_php';
+
+// Conexão com o banco de dados
+$conexao = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
+
+// Verificar conexão
+if ($conexao->connect_error) {
+    die("Conexão falhou: " . $conexao->connect_error);
+}
+
+if(isset($_POST['submit'])) {
+    include_once('config.php');
+    $nome = $_POST['nome'];
+    $sexo = $_POST['sexo'];
+    $porte = $_POST['porte'];
+    $castrado = $_POST['castrado'];
+    $vermifugado = $_POST['vermifugado'];
+    $doenca = $_POST['doenca'];
+    $idade = $_POST['idade'];
+    $descricao = $_POST['descricao'];
+    $entrada = $_POST['entrada'];
+    $saida = $_POST['saida'];
+    $foto_link = $_POST['foto_link'];
+
+    // Verificar se todos os campos estão preenchidos
+    if (empty($nome) || empty($sexo) || empty($porte) || empty($castrado) || empty($vermifugado) || empty($doenca) || empty($idade) || empty($descricao) || empty($entrada) || empty($saida) || empty($foto_link)) {
+        $erro = "Por favor, preencha todos os campos.";
+    } else {
+        $result = mysqli_query($conexao, "INSERT INTO cadastro(nome, sexo, porte, castrado, vermifugado, doenca, idade, descricao, entrada, saida, foto_link) VALUES ('$nome', '$sexo', '$porte', '$castrado', '$vermifugado', '$doenca', '$idade', '$descricao', '$entrada', '$saida', '$foto_link')");
+
+        if($result) {
+            $mensagem = "Pet cadastrado com sucesso.";
+        } else {
+            $erro = "Erro ao cadastrar usuário.";
+        }
+    }
+}
+
+$conexao->close();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -23,39 +69,48 @@
             justify-content: center;
             align-items: center;
         }
+        .error-message {
+            color: red;
+        }
+        .success-message {
+            color: green;
+        }
     </style>
+    <script>
+        function validateForm() {
+            var nome = document.getElementById('nome').value;
+            var sexo = document.getElementById('sexo').value;
+            var porte = document.getElementById('porte').value;
+            var castrado = document.getElementById('castrado').value;
+            var vermifugado = document.getElementById('vermifugado').value;
+            var doenca = document.getElementById('doenca').value;
+            var idade = document.getElementById('idade').value;
+            var descricao = document.getElementById('descricao').value;
+            var entrada = document.getElementById('entrada').value;
+            var saida = document.getElementById('saida').value;
+            var foto_link = document.getElementById('foto_link').value;
+
+            if (nome == "" || sexo == "" || porte == "" || castrado == "" || vermifugado == "" || doenca == "" || idade == "" || descricao == "" || entrada == "" || saida == "" || foto_link == "") {
+                alert("Por favor, preencha todos os campos.");
+                return false;
+            }
+            return true;
+        }
+    </script>
 </head>
 <body>
     <div class="container">
         <div class="header"></div>
         <div class="main">
-            <?php
-            if(isset($_POST['submit'])) {
-                include_once('config.php');
-                $nome = $_POST['nome'];
-                $sexo = $_POST['sexo'];
-                $porte = $_POST['porte'];
-                $castrado = $_POST['castrado'];
-                $vermifugado = $_POST['vermifugado'];
-                $doenca = $_POST['doenca'];
-                $idade = $_POST['idade'];
-                $descricao = $_POST['descricao'];
-                $entrada = $_POST['entrada'];
-                $saida = $_POST['saida'];
-                $foto_link = $_POST['foto_link'];
-
-                $result = mysqli_query($conexao, "INSERT INTO cadastro(nome, sexo, porte, castrado, vermifugado, doenca, idade, descricao, entrada, saida, foto_link) VALUES ('$nome', '$sexo', '$porte', '$castrado', '$vermifugado', '$doenca', '$idade', '$descricao', '$entrada', '$saida', '$foto_link')");
-
-                if($result) {
-                    echo "<span style='color:green;'>Pet cadastrado com sucesso</span>";
-                } else {
-                    echo "<span style='color:red;'>Erro ao cadastrar usuário</span>";
-                }
-            }
-            ?>
+            <?php if (isset($erro)): ?>
+                <p class="error-message"><?php echo $erro; ?></p>
+            <?php endif; ?>
+            <?php if (isset($mensagem)): ?>
+                <p class="success-message"><?php echo $mensagem; ?></p>
+            <?php endif; ?>
             <h4>Cadastrar Pets</h4>
             <div class="scrollable-form">
-                <form action="cadastrar_pets.php" method="POST">
+                <form action="cadastrar_pets.php" method="POST" onsubmit="return validateForm()">
                     <label for="nome">Nome:</label><br>
                     <input type="text" id="nome" name="nome"><br>
                     <br><label for="sexo">Sexo:</label>
@@ -102,20 +157,19 @@
                         <option value="obito">Óbito</option>
                         <option value="ong">ONG</option>
                     </select><br>
-                    <label for="foto_link">
                     <label for="foto_link">Link da Foto:</label>
-<input type="text" id="foto_link" name="foto_link"><br>
-<br>
-<div class="button-container">
-    <input type="submit" class="button" name="submit" value="Clique aqui para Salvar">
-</div>
-</form>
-</div>
-</div>
-<div class="footer">
-    <button class="btn btn-primary" onclick="window.location.href='home.html';" type="button">Home</button>
-    <button class="btn btn-secondary" type="button" onclick="window.location.href='g_animais.php';">Voltar</button>
-</div>
-</div>
+                    <input type="text" id="foto_link" name="foto_link"><br>
+                    <br>
+                    <div class="button-container">
+                        <input type="submit" class="button" name="submit" value="Clique aqui para Salvar">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="footer">
+            <button class="btn btn-primary" onclick="window.location.href='home.html';" type="button">Home</button>
+            <button class="btn btn-secondary" type="button" onclick="window.location.href='g_animais.php';">Voltar</button>
+        </div>
+    </div>
 </body>
 </html>
