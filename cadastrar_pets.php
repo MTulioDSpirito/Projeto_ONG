@@ -1,8 +1,8 @@
 <?php
 // Configurações do banco de dados
-$dbHost = '34.95.244.237';
-$dbUsername = 'turma3';
-$dbPassword = '123456';
+$dbHost = 'roundhouse.proxy.rlwy.net';
+$dbUsername = 'root';
+$dbPassword = 'QdbpuYyKwRQBndhIfSlCsLHlZrbiIGbe';
 $dbName = 'bd_php';
 
 // Conexão com o banco de dados
