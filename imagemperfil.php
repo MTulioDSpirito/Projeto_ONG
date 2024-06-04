@@ -1,10 +1,11 @@
 <?php
 session_start();
 
-$dbHost = '34.95.244.237';
-$dbUsername = 'turma3';
-$dbPassword = '123456';
-$dbName = 'bd_php';
+$dbHost = 'roundhouse.proxy.rlwy.net';
+$dbUsername = 'root';
+$dbPassword = 'QdbpuYyKwRQBndhIfSlCsLHlZrbiIGbe';
+$dbName = 'railway';
+$dbPort = '44161';
 
 // Conexão com o banco de dados
 $conexao = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);

@@ -2,23 +2,24 @@
 $dbHost = 'roundhouse.proxy.rlwy.net';
 $dbUsername = 'root';
 $dbPassword = 'QdbpuYyKwRQBndhIfSlCsLHlZrbiIGbe';
-$dbName = 'bd_php';
+$dbName = 'railway';
+$dbPort = '44161';
 
-$conexao = new mysqli($dbHost,$dbUsername,$dbPassword,$dbName);
+$conexao = new mysqli($dbHost,$dbUsername,$dbPassword,$dbName,$dbPort);
 
 
-   // if($conexao->connect_errno)
+    //if($conexao->connect_errno)
 
-       // {
+     //   {
 
-       // echo "Erro";
+      //  echo "Erro";
 
-     //   }
+     //  }
       // else
       //  {
 
-      //     echo "sucesso";
-      //  }
+      //    echo "sucesso";
+      // }
     
 ?>
 
