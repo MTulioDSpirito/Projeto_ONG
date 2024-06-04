@@ -8,7 +8,7 @@ $dbName = 'railway';
 $dbPort = '44161';
 
 // Conexão com o banco de dados
-$conexao = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
+$conexao = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName,$dbPort);
 
 // Verifica se o usuário está logado
 if (!isset($_SESSION['user_id'])) {
