@@ -3,7 +3,7 @@
 $dbHost = 'roundhouse.proxy.rlwy.net';
 $dbUsername = 'root';
 $dbPassword = 'QdbpuYyKwRQBndhIfSlCsLHlZrbiIGbe';
-$dbName = 'railway';
+$dbName = 'bd_php';
 $dbPort = '44161';
 
 // Conexão com o banco de dados

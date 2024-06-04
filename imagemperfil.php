@@ -4,7 +4,7 @@ session_start();
 $dbHost = 'roundhouse.proxy.rlwy.net';
 $dbUsername = 'root';
 $dbPassword = 'QdbpuYyKwRQBndhIfSlCsLHlZrbiIGbe';
-$dbName = 'db_php';
+$dbName = 'bd_php';
 $dbPort = '44161';
 
 // Conexão com o banco de dados
