@@ -8,7 +8,7 @@ $dbName = 'bd_php';
 $dbPort = '44161';
 
 // Conexão com o banco de dados
-$conexao = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName,$dbPort);
+$conexao = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName, $dbPort);
 
 // Verifica se o usuário está logado
 if (!isset($_SESSION['user_id'])) {
@@ -60,9 +60,18 @@ if (!is_dir($diretorio)) {
     mkdir($diretorio, 0755, true);
 }
 
+// Verifique as permissões do diretório
+if (!is_writable($diretorio)) {
+    die("O diretório não tem permissões de escrita.");
+}
+
 // Nome do arquivo baseado no ID do usuário
 $nomeArquivo = $diretorio . 'avatar_' . $user_id . '.png';
-imagepng($imagem, $nomeArquivo);
+if (imagepng($imagem, $nomeArquivo)) {
+    echo "Imagem salva com sucesso.";
+} else {
+    echo "Erro ao salvar a imagem.";
+}
 
 // Libere a memória
 imagedestroy($imagem);
