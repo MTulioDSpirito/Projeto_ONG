@@ -1,5 +1,32 @@
+<?php
+session_start();
+if(isset($_POST['submit'])) {
+    include_once('config.php');
 
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
 
+    // Verifica se é o admin
+    if($email == 'admin@gmail.com' && $senha == '123456') {
+        header("Location: tela_admin.html");
+        exit();
+    }
+
+    $result = mysqli_query($conexao, "SELECT id FROM usuarios WHERE email='$email' AND senha='$senha'");
+
+    if(mysqli_num_rows($result) > 0) {
+        // O usuário está logado com sucesso
+        $row = mysqli_fetch_assoc($result);
+        $_SESSION['user_id'] = $row['id'];
+        $_SESSION['email'] = $email; // Adicionando a sessão do email
+        header("Location: feed.php");
+        exit();
+    } else {
+        // Email ou senha inválidos
+        $error = "Email ou senha inválidos";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -34,39 +61,6 @@
 <div class="container">
     <div class="header"></div>
     <div class="main">
-
-
-
-
-    <?php
-session_start();
-if(isset($_POST['submit'])) {
-    include_once('config.php');
-
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
-
-    // Verifica se é o admin
-    if($email == 'admin@gmail.com' && $senha == '123456') {
-        header("Location: tela_admin.html");
-        exit();
-    }
-
-    $result = mysqli_query($conexao, "SELECT id FROM usuarios WHERE email='$email' AND senha='$senha'");
-
-    if(mysqli_num_rows($result) > 0) {
-        // O usuário está logado com sucesso
-        $row = mysqli_fetch_assoc($result);
-        $_SESSION['user_id'] = $row['id'];
-        $_SESSION['email'] = $email; // Adicionando a sessão do email
-        header("Location: feed.php");
-        exit();
-    } else {
-        // Email ou senha inválidos
-        echo "<span style='color:red;'>Email ou senha inválidos</span>";
-    }
-}
-?>
         <h1>Entrar</h1>
         <form action="login.php" method="POST" id="loginForm">
             <label for="email">Email:</label><br>
@@ -75,6 +69,11 @@ if(isset($_POST['submit'])) {
             <input type="password" id="senha" name="senha" required><br><br>
             <input class="button" type="submit" name="submit" value="Entrar">
         </form>
+        <?php
+        if(isset($error)) {
+            echo "<span style='color:red;'>$error</span>";
+        }
+        ?>
     </div>
     <div class="footer">
         <a href="cadastro.php">
