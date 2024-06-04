@@ -33,7 +33,7 @@
 <body>
 <div class="container">
     <div class="header"></div>
-    <div class="main" style="background-image: url('Projeto_ONG/img/dog.gif');">
+    <div class="main">
 
 
 
@@ -81,7 +81,7 @@ if(isset($_POST['submit'])) {
             <button class="button" style="background-color: #fff; color: #000;">Registrar</button>
         </a>
         
-        <a href="home.html">
+        <a href="index.html">
          <button class="button" style="background-color:black; color:white;">Home</button></a>
     </div>
 </div>

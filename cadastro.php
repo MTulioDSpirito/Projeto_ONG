@@ -82,7 +82,7 @@
         </form>
     </div>
     <div class="footer">
-        <button class="button" onclick="window.location.href='home.html';" style="background-color: #fff; color: #000;">Home</button>
+        <button class="button" onclick="window.location.href='index.html';" style="background-color: #fff; color: #000;">Home</button>
         <button class="button" onclick="window.location.href='about.html';" style="background-color:black; color:white;">Sobre nós</button>
     </div>
 </div>

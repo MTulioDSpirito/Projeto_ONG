@@ -7,7 +7,7 @@ $dbName = 'bd_php';
 $dbPort = '44161';
 
 // Conexão com o banco de dados
-$conexao = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
+$conexao = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName, $dbPort);
 
 // Verificar conexão
 if ($conexao->connect_error) {
