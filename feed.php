@@ -1,4 +1,42 @@
-<?php include 'imagemperfil.php' ?>
+<?php
+session_start();
+if(!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+
+
+$user_id = $_SESSION['user_id'];
+$email = $_SESSION['email'];
+
+// Conexão com o banco de dados 
+$dbHost = 'roundhouse.proxy.rlwy.net';
+$dbUsername = 'root';
+$dbPassword = 'QdbpuYyKwRQBndhIfSlCsLHlZrbiIGbe';
+$dbName = 'bd_php';
+$dbPort = '44161';
+
+$conexao = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName, $dbPort);
+
+// Verificar conexão
+if ($conexao->connect_error) {
+    die("Conexão falhou: " . $conexao->connect_error);
+}
+
+// Consulta para obter o nome do usuário logado
+$sql = "SELECT nome FROM usuarios WHERE ID='$user_id'";
+$resultado = $conexao->query($sql);
+
+if ($resultado->num_rows > 0) {
+    $row = $resultado->fetch_assoc();
+    $nome_usuario = $row['nome'];
+} else {
+    $nome_usuario = 'Usuário';
+}
+
+$conexao->close();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -67,9 +105,10 @@
     }
     .nome-usuario {
         position: absolute;
-        bottom: 15px; /* Ajuste este valor conforme necessário */
+        bottom: 10px; /* Ajuste este valor conforme necessário */
         font-weight: bold;
         color: #B61F43;
+        font-size: x-large;
         
     }
     </style>
@@ -93,13 +132,14 @@
             <button class="button" onclick="window.location.href='usuario_relatorio.html';">
                 <img src="./img/search-file.gif" alt="Search">
             </button>
-            <button class="button" id="perfil" onclick="window.location.href='usuario_logado.php';">
-        <!--<img class="perfil" src=" echo $nomeArquivo; ?>" alt="Avatar">-->
-        <div class="nome-usuario">
-            <?php echo htmlspecialchars($nome); ?>
+            <button class="button" id="perfil" onclick="window.location.href='editar_perfil.php';">
+                <!--<img class="perfil" src=" echo $nomeArquivo; ?>" alt="Avatar">-->
+                <div class="nome-usuario">
+                    <?php echo substr($nome_usuario, 0, 1); ?>
+                </div>
+            </button>
         </div>
-    </button>
-        </div>
+        
     </div>
 
     <!-- Modal -->
