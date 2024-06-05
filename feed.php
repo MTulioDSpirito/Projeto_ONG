@@ -58,6 +58,20 @@
             width: 50px;
             height: 50px;
         }
+        
+        .button {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .nome-usuario {
+        position: absolute;
+        bottom: 15px; /* Ajuste este valor conforme necessário */
+        font-weight: bold;
+        color: #B61F43;
+        
+    }
     </style>
 </head>
 <body>
@@ -79,9 +93,12 @@
             <button class="button" onclick="window.location.href='usuario_relatorio.html';">
                 <img src="./img/search-file.gif" alt="Search">
             </button>
-            <button class="button" onclick="window.location.href='usuario_logado.php';">
-                <img class="perfil" src="<?php echo $nomeArquivo; ?>" alt="Avatar">
-            </button>
+            <button class="button" id="perfil" onclick="window.location.href='usuario_logado.php';">
+        <!--<img class="perfil" src=" echo $nomeArquivo; ?>" alt="Avatar">-->
+        <div class="nome-usuario">
+            <?php echo htmlspecialchars($nome); ?>
+        </div>
+    </button>
         </div>
     </div>
 
