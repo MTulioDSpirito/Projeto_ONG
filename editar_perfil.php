@@ -1,29 +1,6 @@
 
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="home.css">
-    <script>
-        function enableEditing() {
-            document.getElementById('nome').disabled = false;
-            document.getElementById('email').disabled = false;
-            document.getElementById('senha').disabled = false;
-            document.getElementById('endereco').disabled = false;
-            document.getElementById('salvarBtn').style.display = 'inline-block';
-            document.getElementById('editarBtn').style.display = 'none';
-        }
-    </script>
-</head>
-<body>
-    <div class="container">
-        <div class="header"></div>
-        <div class="main">
-
-        <?php
+<?php
 session_start();
 if(!isset($_SESSION['user_id'])) {
     header("Location: login.php");
@@ -56,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sql = "UPDATE usuarios SET nome='$nome', email='$email', senha='$senha', endereco='$endereco' WHERE id='$user_id'";
 
     if ($conexao->query($sql) === TRUE) {
-        echo "Perfil atualizado com sucesso!";
+        //echo "Perfil atualizado com sucesso!";//
     } else {
         echo "Erro ao atualizar o perfil: " . $conexao->error;
     }
@@ -81,6 +58,29 @@ if ($resultado->num_rows > 0) {
 
 $conexao->close();
 ?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="home.css">
+    <script>
+        function enableEditing() {
+            document.getElementById('nome').disabled = false;
+            document.getElementById('email').disabled = false;
+            document.getElementById('senha').disabled = false;
+            document.getElementById('endereco').disabled = false;
+            document.getElementById('salvarBtn').style.display = 'inline-block';
+            document.getElementById('editarBtn').style.display = 'none';
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header"></div>
+        <div class="main">
+
             <div class="container">
                 <h1>Editar Perfil</h1>
                 <form method="post" action="">
