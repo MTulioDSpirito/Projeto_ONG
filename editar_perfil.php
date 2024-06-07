@@ -1,5 +1,3 @@
-
-
 <?php
 session_start();
 if(!isset($_SESSION['user_id'])) {
@@ -33,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sql = "UPDATE usuarios SET nome='$nome', email='$email', senha='$senha', endereco='$endereco' WHERE id='$user_id'";
 
     if ($conexao->query($sql) === TRUE) {
-        //echo "Perfil atualizado com sucesso!";//
+        echo "";
     } else {
         echo "Erro ao atualizar o perfil: " . $conexao->error;
     }
@@ -58,6 +56,7 @@ if ($resultado->num_rows > 0) {
 
 $conexao->close();
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -80,7 +79,6 @@ $conexao->close();
     <div class="container">
         <div class="header"></div>
         <div class="main">
-
             <div class="container">
                 <h1>Editar Perfil</h1>
                 <form method="post" action="">
