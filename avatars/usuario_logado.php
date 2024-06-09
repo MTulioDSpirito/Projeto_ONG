@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="home.css">
     <style>
-        .profile-avatar img {
-            border-radius: 50%;
+        .profile-avatar {
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -20,7 +22,7 @@
             <h1>Perfil usuário</h1>
             <div class="container">
                 <div class="profile-avatar">
-                    <img class="mx-auto d-block img-fluid" src="<?php echo $nomeArquivo; ?>" alt="Avatar">
+                    <?php echo htmlspecialchars($nome); ?>
                 </div>
                 <ul class="list-group" style="margin-top:2px; margin-bottom:25px;">
                     <li class="list-group-item"><strong>Nome:</strong> <?php echo htmlspecialchars($nome); ?></li>

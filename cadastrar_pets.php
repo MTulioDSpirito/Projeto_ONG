@@ -179,7 +179,7 @@ $conexao->close();
             </div>
         </div>
         <div class="footer">
-            <button class="btn btn-primary" onclick="window.location.href='home.html';" type="button">Home</button>
+            <button class="btn btn-primary" onclick="window.location.href='index.html';" type="button">Home</button>
             <button class="btn btn-secondary" type="button" onclick="window.location.href='g_animais.php';">Voltar</button>
         </div>
     </div>
