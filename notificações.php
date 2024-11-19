@@ -1,6 +1,5 @@
 <?php
-// Configurações do banco de dados
-$dbHost = 'roundhouse.proxy.rlwy.net';
+$dbHost = 'autorack.proxy.rlwy.net';
 $dbUsername = 'root';
 $dbPassword = 'OaytArnxmFfaxhrHFCtsiAvysmKeHVUt';
 $dbName = 'bd_php';

@@ -1,9 +1,9 @@
 <?php
-$dbHost = 'roundhouse.proxy.rlwy.net';
+$dbHost = 'autorack.proxy.rlwy.net';
 $dbUsername = 'root';
-$dbPassword = 'QdbpuYyKwRQBndhIfSlCsLHlZrbiIGbe';
+$dbPassword = 'OaytArnxmFfaxhrHFCtsiAvysmKeHVUt';
 $dbName = 'bd_php';
-$dbPort = '44161';
+$dbPort = '46999';
 
 // Cria a conexão com o banco de dados
 $conexao = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName, $dbPort);

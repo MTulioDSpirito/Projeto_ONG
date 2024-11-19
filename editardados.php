@@ -1,11 +1,11 @@
 <?php
 session_start();
 
-$dbHost = 'roundhouse.proxy.rlwy.net';
+$dbHost = 'autorack.proxy.rlwy.net';
 $dbUsername = 'root';
-$dbPassword = 'QdbpuYyKwRQBndhIfSlCsLHlZrbiIGbe';
+$dbPassword = 'OaytArnxmFfaxhrHFCtsiAvysmKeHVUt';
 $dbName = 'bd_php';
-$dbPort = '44161';
+$dbPort = '46999';
 
 $conexao = new mysqli($dbHost,$dbUsername,$dbPassword,$dbName,$dbPort);
 
