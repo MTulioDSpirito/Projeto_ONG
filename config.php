@@ -2,7 +2,7 @@
 $dbHost = 'autorack.proxy.rlwy.net';
 $dbUsername = 'root';
 $dbPassword = 'OaytArnxmFfaxhrHFCtsiAvysmKeHVUt';
-$dbName = 'bd_php';
+$dbName = 'railway';
 $dbPort = '46999';
 
 $conexao = new mysqli($dbHost,$dbUsername,$dbPassword,$dbName,$dbPort);
