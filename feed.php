@@ -283,7 +283,6 @@ $conexao->close();
             .then(data => {
                 alert('Solicitação enviada com sucesso!');
                 // Fechar o modal após enviar
-                
                 const adoptionModal = bootstrap.Modal.getInstance(document.getElementById('adoptionModal'));
                 adoptionModal.hide();
             })
