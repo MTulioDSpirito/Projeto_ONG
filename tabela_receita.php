@@ -1,5 +1,4 @@
 <?php
-session_start();
 $dbHost = 'autorack.proxy.rlwy.net';
 $dbUsername = 'root';
 $dbPassword = 'OaytArnxmFfaxhrHFCtsiAvysmKeHVUt';
