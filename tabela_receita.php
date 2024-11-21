@@ -1,5 +1,4 @@
 <?php
-// Conexão com o banco de dados
 session_start();
 $dbHost = 'autorack.proxy.rlwy.net';
 $dbUsername = 'root';
