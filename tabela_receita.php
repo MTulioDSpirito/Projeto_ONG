@@ -30,7 +30,14 @@ if (isset($_GET['delete'])) {
 }
 
 // Buscar receitas
-$sql = "SELECT * FROM revenues";
+$search = "";
+if (isset($_GET['search'])) {
+    $search = $conexao->real_escape_string($_GET['search']);
+    $sql = "SELECT * FROM revenues WHERE description LIKE '%$search%'";
+} else {
+    $sql = "SELECT * FROM revenues";
+}
+
 $result = $conexao->query($sql);
 ?>
 
@@ -82,14 +89,14 @@ $result = $conexao->query($sql);
       
     <div class="main">
 
-    <h4>Gerenciar Usuários</h4>
+    <h4>Gerenciar Receita</h4>
     <?php
 
     $pesquisa = $_POST['busca'] ?? '';
 
     include "config.php";
 
-    $sql = "SELECT * FROM usuarios WHERE nome LIKE '%$pesquisa%'";
+    $sql = "SELECT * FROM revenues WHERE description LIKE '%$pesquisa%'";
 
     $dados = mysqli_query($conexao, $sql);
 
@@ -98,28 +105,30 @@ $result = $conexao->query($sql);
       
     <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
-    <form class="d-flex" role="search" action="g_usuarios.php" method="post">
-      <input class="form-control me-2" type="search" placeholder="Inserir nome" name="busca" aria-label="Search">
-      <button class="button" type="submit" >Pesquisa</button>
-    </form>
+    <form method="GET" class="mb-4">
+            <div class="input-group">
+                <input type="text" class="form-control" name="search" placeholder="Buscar por nome" value="<?php echo htmlspecialchars($search); ?>">
+                <button class="btn btn-primary" type="submit">Buscar</button>
+            </div>
+        </form>
   </div>
   </nav>
 
   
 
-  <div class="scrollable-table">
+<div class="scrollable-table">
 
         
         <table class="table">
         <h4 class="text-center mb-4">Gerenciar Receita</h4>
 
-<!-- Mensagem de feedback -->
-<?php if (isset($mensagem)): ?>
+    <!-- Mensagem de feedback -->
+    <?php if (isset($mensagem)): ?>
     <div class="alert alert-info"><?php echo $mensagem; ?></div>
-<?php endif; ?>
+    <?php endif; ?>
 
-<!-- Formulário para adicionar receita -->
-<form method="POST" class="mb-4">
+    <!-- Formulário para adicionar receita -->
+    <form method="POST" class="mb-4">
     <div class="mb-3">
         <label for="descricao" class="form-label">Descrição</label>
         <input type="text" class="form-control" id="descricao" name="descricao" required>
@@ -137,10 +146,10 @@ $result = $conexao->query($sql);
         <input type="date" class="form-control" id="data" name="data" required>
     </div>
     <button type="submit" name="add" class="btn btn-success w-100">Adicionar Receita</button>
-</form>
+    </form>
 
-<!-- Tabela de receitas -->
-<div class="scrollable-table">
+    <!-- Tabela de receitas -->
+    <div class="scrollable-table">
     <table class="table table-striped">
         <thead>
             <tr>
@@ -177,7 +186,7 @@ $result = $conexao->query($sql);
             <?php endif; ?>
         </tbody>
     </table>
-</div>
+    </div>
 </div>
 </body>
 <div class="footer"> 
