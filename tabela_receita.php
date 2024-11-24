@@ -66,7 +66,7 @@ $result = $conexao->query($sql);
 </head>
 <body>
     <div class="container">
-        <h4 class="text-center mb-4">Gerenciar Receitas</h4>
+        <h4 class="text-center mb-4">Gerenciar Receita</h4>
 
         <!-- Mensagem de feedback -->
         <?php if (isset($mensagem)): ?>
