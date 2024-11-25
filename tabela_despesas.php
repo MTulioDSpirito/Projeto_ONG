@@ -130,7 +130,10 @@ $result = $conexao->query($sql);
         </div>
     </div>
         <div class="footer">
-            <button class="button" style="background-color:black; color:white;" onclick="window.location.href='login.php';">Sair</button>
+        <button class="button" style="background-color: #fff; color: #000;" onclick="window.location.href='tela_admin.html';">Menu</button>
+
+        <button class="button" style="background-color:black; color:white;" onclick="window.location.href='login.php';">Sair</button>
+
         </div>
     </div>
 </body>
